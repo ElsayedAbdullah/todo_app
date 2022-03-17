@@ -1,25 +1,30 @@
-import logo from './logo.svg';
+import React,{ Component } from 'react';
 import './App.css';
+import ListForm from './components/ListForm';
+import Lists from './components/Lists';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state= {
+    lists: []
+  }
+
+  addItem =(item) => {
+    item.id = Math.random();
+    let lists = this.state.lists;
+    lists.push(item)
+    this.setState({
+      lists
+    })
+  }
+  render () {
+    return (
+      <div className="App">
+        <h1>Todo App</h1>
+        <ListForm addItem={this.addItem}/>
+        <Lists lists={this.state.lists}  />
+      </div>
+    );
+  }
 }
 
 export default App;
