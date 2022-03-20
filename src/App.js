@@ -1,27 +1,16 @@
 import React,{ Component } from 'react';
 import './App.css';
-import ListForm from './components/ListForm';
-import Lists from './components/Lists';
+import ListingUser from './components/ListingUser/ListingUser';
+import TodoApp from './components/TodoApp/TodoApp';
 
 class App extends Component {
-  state= {
-    lists: []
-  }
-
-  addItem =(item) => {
-    item.id = Math.random();
-    let lists = this.state.lists;
-    lists.push(item)
-    this.setState({
-      lists
-    })
-  }
   render () {
     return (
       <div className="App">
-        <h1>Todo App</h1>
-        <ListForm addItem={this.addItem}/>
-        <Lists lists={this.state.lists}  />
+        
+        <TodoApp />
+
+        <ListingUser />
       </div>
     );
   }
